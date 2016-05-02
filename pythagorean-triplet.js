@@ -20,6 +20,7 @@ function Triplet(s1,s2,s3){
 
 };
 
+
 Triplet.where = function(object) {
 
 	var max = object.maxFactor;
@@ -30,19 +31,14 @@ Triplet.where = function(object) {
 
 	for(var s1=min; s1<max; s1++){
 		for(var s2=min; s2<max; s2++){
-			for(var s3=min; s3<=max; s3++){
-				var triplet = new Triplet(s1, s2, s3);
+			var s3 = Math.round(Math.sqrt(s1*s1 + s2*s2));
+			var triplet = new Triplet(s1, s2, s3);
 				if(triplet.isPythagorean() && s1 < s2 && triplet.sumsTo(sum)){
 					triplets.push(triplet);
 				}
-			}
 		}
 	}
-
 	return triplets;
 };
 
-
 module.exports = Triplet;
-
-
